@@ -1,41 +1,7 @@
 {
-  "name": "shallow-equal-modern",
-  "version": "1.2.1",
+  "name": "shallow-equal",
+  "version": "1.2.2",
   "description": "Typescript-compatible minimalistic shallow equality check for arrays/objects",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/fivecar/shallow-equal-modern.git"
-  },
-  "author": "Philip Su <philip@sparkanvil.com>",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "scripts": {
-    "lint": "eslint src",
-    "test": "nyc --require esm mocha 'src/*.test.js'",
-    "build:objects": "rm -rf objects && rollup -f cjs -i src/objects.js -o objects/index.js",
-    "build:arrays": "rm -rf arrays && rollup -f cjs -i src/arrays.js -o arrays/index.js",
-    "build:cjs": "rollup -f cjs -i src/index.js -o dist/index.cjs.js",
-    "build:esm": "rollup -f esm -i src/index.js -o dist/index.esm.js",
-    "prebuild": "npm run lint && npm test",
-    "build": "npm run build:objects && npm run build:arrays && rm -rf dist && npm run build:cjs && npm run build:esm",
-    "preversion": "npm run prebuild",
-    "postversion": "git push && git push --tags",
-    "prepare": "npm run build"
-  },
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-mocha": "^6.2.2",
-    "esm": "^3.2.25",
-    "mocha": "^6.2.2",
-    "nyc": "^14.1.1",
-    "rollup": "^1.27.8"
-  },
-  "files": [
-    "dist",
-    "arrays",
-    "objects"
-  ],
   "keywords": [
     "shallow",
     "equality",
@@ -57,22 +23,77 @@
     "test",
     "typescript"
   ],
-  "nyc": {
-    "lines": 100,
-    "statements": 100,
-    "functions": 100,
-    "branches": 100,
-    "include": [
-      "src/*.js"
-    ],
-    "exclude": [
-      "src/*.test.js"
-    ],
-    "reporter": [
-      "lcov",
-      "text-summary"
-    ],
-    "check-coverage": true
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fivecar/shallow-equal-modern.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "author": "Philip Su <philip@sparkanvil.com>",
+  "scripts": {
+    "prebuild": "npm run lint && npm test",
+    "build": "pika build",
+    "lint": "eslint src --ext .ts",
+    "prepare": "npm run build",
+    "test": "jest",
+    "preversion": "npm run prebuild",
+    "postversion": "git push && git push --tags"
+  },
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-standard-pkg",
+        {
+          "exclude": [
+            "__tests__/**/*"
+          ]
+        }
+      ],
+      [
+        "@pika/plugin-build-node"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ],
+      [
+        "@pika/plugin-build-types"
+      ]
+    ]
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "collectCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.3.1",
+    "@pika/pack": "^0.5.0",
+    "@pika/plugin-build-node": "^0.8.1",
+    "@pika/plugin-build-types": "^0.8.1",
+    "@pika/plugin-build-web": "^0.8.1",
+    "@pika/plugin-standard-pkg": "^0.8.1",
+    "@types/jest": "^24.0.23",
+    "@typescript-eslint/eslint-plugin": "^2.11.0",
+    "@typescript-eslint/parser": "^2.11.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-jest": "^23.1.1",
+    "eslint-plugin-json": "^2.0.1",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.3"
+  }
 }
