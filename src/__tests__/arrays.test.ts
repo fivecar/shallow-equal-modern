@@ -1,4 +1,4 @@
-import shallowEqualArrays from "./arrays";
+import shallowEqualArrays from "../arrays";
 
 const arr = [1, 2, 3];
 const obj1 = { game: "chess" };

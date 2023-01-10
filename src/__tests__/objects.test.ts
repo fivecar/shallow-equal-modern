@@ -1,5 +1,4 @@
-import { expect } from "@jest/globals";
-import shallowEqualObjects from "./objects";
+import shallowEqualObjects from "../objects";
 
 const obj1 = { game: "chess", year: "1979" };
 const obj2 = { language: "elm" };
