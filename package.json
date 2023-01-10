@@ -27,6 +27,9 @@
     "test",
     "typescript"
   ],
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/fivecar/shallow-equal-modern.git"
