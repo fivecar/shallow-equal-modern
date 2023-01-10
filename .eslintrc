@@ -17,7 +17,6 @@
     "array-callback-return": 2,
     "brace-style": [2, "1tbs"],
     "camelcase": [2, { "properties": "always" }],
-    "comma-dangle": [2, "never"],
     "comma-style": [2, "last"],
     "eol-last": 2,
     "indent": [2, 2, { "SwitchCase": 1 }],

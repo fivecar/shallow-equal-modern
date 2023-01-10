@@ -51,9 +51,9 @@ const tests = [
   },
 ];
 
-describe("shallowEqualArrays", function () {
-  tests.forEach(function (test) {
-    it("should " + test.should, function () {
+describe("shallowEqualArrays", () => {
+  tests.forEach((test) => {
+    it("should " + test.should, () => {
       expect(shallowEqualArrays(test.arrA, test.arrB)).toEqual(test.result);
     });
   });

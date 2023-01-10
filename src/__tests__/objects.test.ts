@@ -3,7 +3,7 @@ import shallowEqualObjects from "../objects";
 const obj1 = { game: "chess", year: "1979" };
 const obj2 = { language: "elm" };
 
-var tests = [
+const tests = [
   {
     should: "return false when A is falsy",
     objA: null,
@@ -54,9 +54,9 @@ var tests = [
   },
 ];
 
-describe("shallowEqualObjects", function () {
-  tests.forEach(function (test) {
-    it("should " + test.should, function () {
+describe("shallowEqualObjects", () => {
+  tests.forEach((test) => {
+    it("should " + test.should, () => {
       expect(shallowEqualObjects(test.objA, test.objB)).toEqual(test.result);
     });
   });
