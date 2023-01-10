@@ -1,9 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type validValue = Record<string, any> | null | undefined;
+type validValue<T> = Record<string, T> | null | undefined;
 
-export default function shallowEqualObjects(
-  objA: validValue,
-  objB: validValue
+export default function shallowEqualObjects<T>(
+  objA: validValue<T>,
+  objB: validValue<T>
 ): boolean {
   if (objA === objB) {
     return true;

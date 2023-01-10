@@ -1,9 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type validValue = any[] | null | undefined;
+type validValue<T> = T[] | null | undefined;
 
-export default function shallowEqualArrays(
-  arrA: validValue,
-  arrB: validValue
+export default function shallowEqualArrays<T>(
+  arrA: validValue<T>,
+  arrB: validValue<T>
 ): boolean {
   if (arrA === arrB) {
     return true;
