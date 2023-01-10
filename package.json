@@ -1,12 +1,12 @@
 {
-  "name": "shallow-equal",
+  "name": "shallow-equal-modern",
   "version": "1.2.1",
-  "description": "Minimalistic shallow equality check for arrays/objects",
+  "description": "Typescript-compatible minimalistic shallow equality check for arrays/objects",
   "repository": {
     "type": "git",
-    "url": "https://github.com/moroshko/shallow-equal.git"
+    "url": "https://github.com/fivecar/shallow-equal-modern.git"
   },
-  "author": "Misha Moroshko <michael.moroshko@gmail.com>",
+  "author": "Philip Su <philip@sparkanvil.com>",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "scripts": {
@@ -54,7 +54,8 @@
     "object",
     "array",
     "check",
-    "test"
+    "test",
+    "typescript"
   ],
   "nyc": {
     "lines": 100,
