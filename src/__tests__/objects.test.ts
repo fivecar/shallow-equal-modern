@@ -1,9 +1,14 @@
-import shallowEqualObjects from "../objects";
+import shallowEqualObjects, { validObjectValue } from "../objects";
 
 const obj1 = { game: "chess", year: "1979" };
 const obj2 = { language: "elm" };
 
-const tests = [
+export const objTests: {
+  should: string;
+  objA: validObjectValue<any>;
+  objB: validObjectValue<any>;
+  result: boolean;
+}[] = [
   {
     should: "return false when A is falsy",
     objA: null,
@@ -55,7 +60,7 @@ const tests = [
 ];
 
 describe("shallowEqualObjects", () => {
-  tests.forEach((test) => {
+  objTests.forEach((test) => {
     it("should " + test.should, () => {
       expect(shallowEqualObjects(test.objA, test.objB)).toEqual(test.result);
     });

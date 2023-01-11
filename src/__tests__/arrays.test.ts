@@ -1,11 +1,16 @@
-import shallowEqualArrays from "../arrays";
+import shallowEqualArrays, { validArrayValue } from "../arrays";
 
 const arr = [1, 2, 3];
 const obj1 = { game: "chess" };
 const obj2 = { company: "facebook" };
 const obj3 = { technology: "react" };
 
-const tests = [
+export const arrTests: {
+  should: string;
+  arrA: validArrayValue<any>;
+  arrB: validArrayValue<any>;
+  result: boolean;
+}[] = [
   {
     should: "return false when A is falsy",
     arrA: null,
@@ -52,7 +57,7 @@ const tests = [
 ];
 
 describe("shallowEqualArrays", () => {
-  tests.forEach((test) => {
+  arrTests.forEach((test) => {
     it("should " + test.should, () => {
       expect(shallowEqualArrays(test.arrA, test.arrB)).toEqual(test.result);
     });
